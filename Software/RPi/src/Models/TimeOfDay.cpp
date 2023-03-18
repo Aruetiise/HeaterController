@@ -4,6 +4,11 @@
 #include "TimeOfDay.h"
 #include <stdexcept>
 
+TimeOfDay::TimeOfDay() {
+    setHour(0);
+    setMinute(0);
+}
+
 TimeOfDay::TimeOfDay(int hour, int minute) {
     setHour(hour);
     setMinute(minute);

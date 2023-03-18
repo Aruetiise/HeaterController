@@ -6,6 +6,7 @@
 #define RPI_TIMEOFDAY_H
 class TimeOfDay{
 public:
+    TimeOfDay();
     TimeOfDay(int hour, int minute);
     void setHour(int hour);
     void setMinute(int minute);
