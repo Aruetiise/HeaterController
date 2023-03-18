@@ -11,6 +11,8 @@
 #include <sstream>
 #include <string>
 #include <stdexcept>
+#include <ctime>
+#include <algorithm>
 
 WeekSchedule::WeekSchedule() {}
 
