@@ -3,6 +3,7 @@
 //
 #include "TimeOfDay.h"
 #include <stdexcept>
+#include <iostream>
 
 TimeOfDay::TimeOfDay() {
     setHour(0);
@@ -10,6 +11,7 @@ TimeOfDay::TimeOfDay() {
 }
 
 TimeOfDay::TimeOfDay(int hour, int minute) {
+    std::cout << "hour: " << hour << " minute: " << minute << std::endl;
     setHour(hour);
     setMinute(minute);
 }
