@@ -2,6 +2,7 @@
 // Created by Julius on 18.03.2023.
 //
 #include "HeatingTimeslot.h"
+#include "TimeOfDay.h"
 #include <stdexcept>
 
 HeatingTimeslot::HeatingTimeslot(){
