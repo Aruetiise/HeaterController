@@ -23,11 +23,11 @@ void TimeOfDay::setMinute(int minute) {
         throw std::invalid_argument("Minute value has to be between 0 and 59");
 }
 
-int TimeOfDay::getHour() {
+int TimeOfDay::getHour() const{
     return hour;
 }
 
-int TimeOfDay::getMinute() {
+int TimeOfDay::getMinute() const{
     return min;
 }
 
