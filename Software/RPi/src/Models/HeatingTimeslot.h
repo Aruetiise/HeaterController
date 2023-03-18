@@ -16,7 +16,7 @@ public:
     TimeOfDay getRemainingTime(TimeOfDay currentTime) const;
 
     void setTargetTemperature(float temp);
-    void getTargetTemperature() const;
+    float getTargetTemperature() const;
 private:
     TimeOfDay startTime;
     TimeOfDay endTime;
