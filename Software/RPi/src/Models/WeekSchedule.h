@@ -23,6 +23,7 @@ public:
     void removeTimeslot(int day, HeatingTimeslot slot);
     void listTimeslots();
     void sortTimeslots();
+    bool isCurrentlyInHeatingTimeslot() const;
 private:
     std::list<HeatingTimeslot> schedule[7];
 };
