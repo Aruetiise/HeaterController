@@ -20,7 +20,7 @@ public:
     bool operator!=(const TimeOfDay& other) const;
     TimeOfDay operator+(const TimeOfDay& other) const;
     TimeOfDay operator-(const TimeOfDay& other) const;
-    std::ostream& operator<<(std::ostream& os, const TimeOfDay& time) const;
+    std::ostream& operator<<(std::ostream& os, const TimeOfDay& time);
 private:
     int hour;
     int min;
