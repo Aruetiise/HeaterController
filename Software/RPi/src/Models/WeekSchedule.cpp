@@ -40,18 +40,17 @@ void WeekSchedule::sortTimeslots() {
 }
 
 bool WeekSchedule::isCurrentlyInHeatingTimeslot() const {
-    // Get the current time in the Berlin timezone
-    auto berlin = date::locate_zone("Europe/Berlin");
+    // Get the current time
     auto now = std::chrono::system_clock::now();
-    auto current_time = date::make_zoned(berlin, now).get_local_time();
+    std::time_t t = std::chrono::system_clock::to_time_t(now);
+    std::tm localTime = *std::localtime(&t);
 
     // Get the current day of the week
-    time_t t = std::chrono::system_clock::to_time_t(now);
-    tm* localTime = localtime(&t);
-    int currentDay = HeatingTimeslot::shiftWeekStartFromSundayToMonday(localTime->tm_wday);
+    int currentDay = localTime.tm_wday == 0 ? 6 : localTime.tm_wday - 1;
 
     // Check if the current time falls within any heating timeslot for the current day
     const std::vector<HeatingTimeslot>& slotsForCurrentDay = getSlotsForDay(currentDay);
+    auto current_time = std::chrono::system_clock::from_time_t(std::mktime(&localTime));
     for (const HeatingTimeslot& slot : slotsForCurrentDay) {
         if (slot.isInTimeslot(current_time)) {
             return true;
