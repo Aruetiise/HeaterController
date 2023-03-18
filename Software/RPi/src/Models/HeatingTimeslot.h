@@ -11,7 +11,7 @@ public:
     void setStartTime(TimeOfDay time);
     void setEndTime(TimeOfDay time);
     TimeOfDay getStartTime();
-    TimeOfDay getEndTime(TimeOfDay time);
+    TimeOfDay getEndTime();
     bool isInTimeslot(TimeOfDay currentTime) const;
 
     TimeOfDay getDuration() const;
