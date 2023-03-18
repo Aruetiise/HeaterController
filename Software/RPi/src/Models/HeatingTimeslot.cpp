@@ -43,3 +43,7 @@ void HeatingTimeslot::setTargetTemperature(float temp) {
 float HeatingTimeslot::getTargetTemperature() const {
     return this->targetTemperature;
 }
+
+int shiftWeekStartFromSundayToMonday(int day) {
+    return (day + 6) % 7;
+}

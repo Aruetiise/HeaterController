@@ -17,6 +17,8 @@ public:
 
     void setTargetTemperature(float temp);
     float getTargetTemperature() const;
+
+    static int shiftWeekStartFromSundayToMonday(int day);
 private:
     TimeOfDay startTime;
     TimeOfDay endTime;
