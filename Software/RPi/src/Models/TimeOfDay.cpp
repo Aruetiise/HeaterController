@@ -110,7 +110,7 @@ TimeOfDay TimeOfDay::operator-(const TimeOfDay &other) const{
     return TimeOfDay(hour, min);
 }
 
-std::ostream& operator<<(std::ostream& os, const TimeOfDay& time){
+friend std::ostream& operator<<(std::ostream& os, const TimeOfDay& time){
     os << time.getHour() << ":" << time.getMinute();
     return os;
 }
