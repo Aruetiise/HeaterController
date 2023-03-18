@@ -6,8 +6,8 @@
 #include <stdexcept>
 
 HeatingTimeslot::HeatingTimeslot(){
-    this->startTime = TimeOfDay(0,0);
-    this->endTime = TimeOfDay(23,59);
+    /*this->startTime = TimeOfDay(0,0);
+    this->endTime = TimeOfDay(23,59);*/
 }
 
 void HeatingTimeslot::setStartTime(TimeOfDay time) {
