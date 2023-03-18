@@ -13,26 +13,26 @@ void TimeOfDay::setHour(int hour) {
     if(hour <24 && hour >= 0)
         this->hour = hour;
     else
-        throw std::invalid_argument("Hour value has to be between 0 and 23";)
+        throw std::invalid_argument("Hour value has to be between 0 and 23");
 }
 
 void TimeOfDay::setMinute(int minute) {
     if(minute <60 && minute >= 0)
         this->min = minute;
     else
-        throw std::invalid_argument("Minute value has to be between 0 and 59";)
+        throw std::invalid_argument("Minute value has to be between 0 and 59");
 }
 
-void TimeOfDay::getHour() {
+int TimeOfDay::getHour() {
     return hour;
 }
 
-void TimeOfDay::getMinute() {
+int TimeOfDay::getMinute() {
     return min;
 }
 
 bool TimeOfDay::operator<(const TimeOfDay &other) const{
-    if(this->hour!=other->hour){
+    if(this->hour!=other.hour){
         return this->hour < other.hour;
     }else{
         return this->min < other.min;
@@ -40,7 +40,7 @@ bool TimeOfDay::operator<(const TimeOfDay &other) const{
 }
 
 bool TimeOfDay::operator<=(const TimeOfDay &other) const{
-    if(this->hour!=other->hour){
+    if(this->hour!=other.hour){
         return this->hour < other.hour;
     }else{
         return this->min <= other.min;
@@ -48,7 +48,7 @@ bool TimeOfDay::operator<=(const TimeOfDay &other) const{
 }
 
 bool TimeOfDay::operator>(const TimeOfDay &other) const{
-    if(this->hour!=other->hour){
+    if(this->hour!=other.hour){
         return this->hour > other.hour;
     }else{
         return this->min > other.min;
@@ -56,7 +56,7 @@ bool TimeOfDay::operator>(const TimeOfDay &other) const{
 }
 
 bool TimeOfDay::operator>=(const TimeOfDay &other) const{
-    if(this->hour!=other->hour){
+    if(this->hour!=other.hour){
         return this->hour > other.hour;
     }else{
         return this->min >= other.min;

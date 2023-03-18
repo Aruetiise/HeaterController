@@ -9,8 +9,8 @@ public:
     TimeOfDay(int hour, int minute);
     void setHour(int hour);
     void setMinute(int minute);
-    void getHour() const;
-    void getMinute() const;
+    int getHour() const;
+    int getMinute() const;
     bool operator<(const TimeOfDay& other) const;
     bool operator<=(const TimeOfDay& other) const;
     bool operator>(const TimeOfDay& other) const;
