@@ -4,6 +4,7 @@
 #include "TimeOfDay.h"
 #include <stdexcept>
 #include <iostream>
+#include <ostream>
 
 TimeOfDay::TimeOfDay() {
     setHour(0);

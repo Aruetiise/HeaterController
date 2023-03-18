@@ -4,6 +4,9 @@
 
 #ifndef RPI_TIMEOFDAY_H
 #define RPI_TIMEOFDAY_H
+
+#include <ostream>
+
 class TimeOfDay{
 public:
     TimeOfDay();
