@@ -11,7 +11,6 @@ TimeOfDay::TimeOfDay() {
 }
 
 TimeOfDay::TimeOfDay(int hour, int minute) {
-    std::cout << "hour: " << hour << " minute: " << minute << std::endl;
     setHour(hour);
     setMinute(minute);
 }
@@ -20,14 +19,14 @@ void TimeOfDay::setHour(int hour) {
     if(hour <24 && hour >= 0)
         this->hour = hour;
     else
-        throw std::invalid_argument("Hour value has to be between 0 and 23");
+        throw std::invalid_argument("Hour value has to be between 0 and 23. Given " + std::to_string(hour));
 }
 
 void TimeOfDay::setMinute(int minute) {
     if(minute <60 && minute >= 0)
         this->min = minute;
     else
-        throw std::invalid_argument("Minute value has to be between 0 and 59");
+        throw std::invalid_argument("Minute value has to be between 0 and 59. Given " + std::to_string(minute));
 }
 
 int TimeOfDay::getHour() const{
@@ -97,12 +96,15 @@ TimeOfDay TimeOfDay::operator-(const TimeOfDay &other) const{
     int min = this->min;
 
     min -= other.min;
-    if(min <0) hour--;
-    min += 60;
+    if(min < 0){
+        hour--;
+        min += 60;
+    }
 
     hour -= other.hour;
-    if(hour <0)
-        hour +=24;
+    if(hour < 0){
+        hour += 24;
+    }
 
-    return TimeOfDay(hour,min);
+    return TimeOfDay(hour, min);
 }

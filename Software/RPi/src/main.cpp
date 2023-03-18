@@ -8,6 +8,6 @@
 int main(int argc, char* argv[]) {
     std::cout << "Hello, world!" << std::endl;
     HeatingTimeslot slot;
-    std::cout << "Duration" << slot.getDuration().getHour() << ":" << slot.getDuration().getMinute() << std::endl;
+    std::cout << "Duration " << slot.getDuration().getHour() << ":" << slot.getDuration().getMinute() << std::endl;
     return 0;
 }
