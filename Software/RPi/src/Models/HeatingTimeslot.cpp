@@ -24,11 +24,11 @@ void HeatingTimeslot::setEndTime(TimeOfDay time) {
         throw std::invalid_argument("The end time has to be after the start time");
 }
 
-TimeOfDay HeatingTimeslot::getStartTime() {
+TimeOfDay HeatingTimeslot::getStartTime() const{
     return this->startTime;
 }
 
-TimeOfDay HeatingTimeslot::getEndTime() {
+TimeOfDay HeatingTimeslot::getEndTime() const{
     return this->endTime;
 }
 
