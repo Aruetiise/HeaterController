@@ -11,7 +11,6 @@
 #include <sstream>
 #include <string>
 #include <stdexcept>
-#include "date/tz.h"
 
 WeekSchedule::WeekSchedule() {}
 
