@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[]) {
     std::cout << "Hello, world!" << std::endl;
-    HeatingTimeslot::HeatingTimeslot slot;
+    HeatingTimeslot slot;
     std::cout << "Duration" << slot.getDuration() << std::endl;
     return 0;
 }
