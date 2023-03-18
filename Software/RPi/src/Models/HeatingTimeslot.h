@@ -10,6 +10,8 @@ public:
     HeatingTimeslot();
     void setStartTime(TimeOfDay time);
     void setEndTime(TimeOfDay time);
+    void getStartTime();
+    void getEndTime(TimeOfDay time);
     bool isInTimeslot(TimeOfDay currentTime) const;
 
     TimeOfDay getDuration() const;
