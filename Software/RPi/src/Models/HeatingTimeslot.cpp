@@ -55,3 +55,7 @@ float HeatingTimeslot::getTargetTemperature() const {
 int shiftWeekStartFromSundayToMonday(int day) {
     return (day + 6) % 7;
 }
+
+bool operator==(const HeatingTimeslot& other) const {
+    return (targetTemperature == other.targetTemperature) && (startTime == other.startTime) && (endTime == other.endTime);
+}

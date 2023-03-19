@@ -21,6 +21,8 @@ public:
     float getTargetTemperature() const;
 
     static int shiftWeekStartFromSundayToMonday(int day);
+
+    bool operator==(const HeatingTimeslot& other) const;
 private:
     TimeOfDay startTime;
     TimeOfDay endTime;
