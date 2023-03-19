@@ -22,7 +22,7 @@ public:
     void addTimeslot(int day, HeatingTimeslot slot);
     void removeTimeslot(int day, HeatingTimeslot slot);
     void listTimeslots();
-    std::list<HeatingTimeslot>& getSlotsForDay(int day) const;
+    const std::list<HeatingTimeslot>& getSlotsForDay(int day) const;
     void sortTimeslots();
     bool isCurrentlyInHeatingTimeslot() const;
 private:
