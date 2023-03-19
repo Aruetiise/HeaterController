@@ -6,6 +6,7 @@
 #define RPI_TIMEOFDAY_H
 
 #include <ostream>
+#include <chrono>
 
 class TimeOfDay{
 public:
