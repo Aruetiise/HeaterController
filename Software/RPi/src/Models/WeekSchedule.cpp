@@ -17,7 +17,11 @@
 WeekSchedule::WeekSchedule() {}
 
 void WeekSchedule::addTimeslot(int day, HeatingTimeslot slot) {
-    schedule[day].push_back(slot);
+    if(day <7 && day >= 0 )
+        schedule[day].push_back(slot);
+    else
+        throw std::invalid_argument("Day has to be between 0(Monday) and 6(Sunday). Given" + std::to_string(day));
+
 }
 
 void WeekSchedule::removeTimeslot(int day, HeatingTimeslot slot) {
@@ -41,6 +45,13 @@ void WeekSchedule::sortTimeslots() {
     }
 }
 
+std::list<HeatingTimeslot> getSlotsForDay(int day) const{
+    if(day <7 && day >= 0 )
+        return schedule[day];
+    else
+        throw std::invalid_argument("Day has to be between 0(Monday) and 6(Sunday). Given" + std::to_string(day));
+}
+
 bool WeekSchedule::isCurrentlyInHeatingTimeslot() const {
     // Get the current time
     auto now = std::chrono::system_clock::now();
@@ -54,7 +65,7 @@ bool WeekSchedule::isCurrentlyInHeatingTimeslot() const {
     const std::vector<HeatingTimeslot>& slotsForCurrentDay = getSlotsForDay(currentDay);
     auto current_time = std::chrono::system_clock::from_time_t(std::mktime(&localTime));
     for (const HeatingTimeslot& slot : slotsForCurrentDay) {
-        if (slot.isInTimeslot(current_time)) {
+        if (slot.isInTimeslot(TimeOfDay(current_time))) {
             return true;
         }
     }
