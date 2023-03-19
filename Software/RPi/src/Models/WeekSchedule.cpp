@@ -62,7 +62,7 @@ bool WeekSchedule::isCurrentlyInHeatingTimeslot() const {
     int currentDay = localTime.tm_wday == 0 ? 6 : localTime.tm_wday - 1;
 
     // Check if the current time falls within any heating timeslot for the current day
-    const std::vector<HeatingTimeslot>& slotsForCurrentDay = getSlotsForDay(currentDay);
+    const std::list<HeatingTimeslot>& slotsForCurrentDay = getSlotsForDay(currentDay);
     auto current_time = std::chrono::system_clock::from_time_t(std::mktime(&localTime));
     for (const HeatingTimeslot& slot : slotsForCurrentDay) {
         if (slot.isInTimeslot(TimeOfDay(current_time))) {
