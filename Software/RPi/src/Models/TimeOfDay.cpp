@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <ostream>
+#include <chrono>
 
 TimeOfDay::TimeOfDay() {
     setHour(0);
@@ -15,6 +16,14 @@ TimeOfDay::TimeOfDay(int hour, int minute) {
     setHour(hour);
     setMinute(minute);
 }
+
+TimeOfDay::TimeOfDay(const std::chrono::system_clock::time_point& systemTime){
+    std::chrono::minutes timeOfDayMinutes = std::chrono::time_point_cast<std::chrono::minutes>(systemTime);
+    setHour(static_cast<int>(timeOfDayMinutes.count() / 60));
+    setMinute(static_cast<int>(timeOfDayMinutes.count() % 60));
+
+}
+
 
 void TimeOfDay::setHour(int hour) {
     if(hour <24 && hour >= 0)

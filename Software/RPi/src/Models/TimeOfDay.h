@@ -11,6 +11,7 @@ class TimeOfDay{
 public:
     TimeOfDay();
     TimeOfDay(int hour, int minute);
+    TimeOfDay(const std::chrono::system_clock::time_point& systemTime);
     void setHour(int hour);
     void setMinute(int minute);
     int getHour() const;
