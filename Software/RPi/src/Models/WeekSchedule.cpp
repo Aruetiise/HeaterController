@@ -45,7 +45,7 @@ void WeekSchedule::sortTimeslots() {
     }
 }
 
-std::list<HeatingTimeslot> getSlotsForDay(int day) const{
+std::list<HeatingTimeslot> WeekSchedule::getSlotsForDay(int day) const{
     if(day <7 && day >= 0 )
         return schedule[day];
     else
