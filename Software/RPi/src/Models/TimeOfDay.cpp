@@ -17,11 +17,10 @@ TimeOfDay::TimeOfDay(int hour, int minute) {
     setMinute(minute);
 }
 
-TimeOfDay::TimeOfDay(const std::chrono::system_clock::time_point& systemTime){
-    std::chrono::minutes timeOfDayMinutes = std::chrono::time_point_cast<std::chrono::minutes>(systemTime);
+TimeOfDay::TimeOfDay(const std::chrono::system_clock::time_point& systemTime) {
+    std::chrono::minutes timeOfDayMinutes = std::chrono::duration_cast<std::chrono::minutes>(systemTime.time_since_epoch());
     setHour(static_cast<int>(timeOfDayMinutes.count() / 60));
     setMinute(static_cast<int>(timeOfDayMinutes.count() % 60));
-
 }
 
 
