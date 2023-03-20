@@ -5,7 +5,7 @@
 #include "Models/HeatingTimeslot.h"
 #include <iostream>
 #include <Adafruit_GFX.h>
-#include <Adafruit_ST7735.h>
+#include "../AdafruitDisplay/Adafruit_ST7735.h"
 
 // Pin definitions for your setup
 #define TFT_CS   24
