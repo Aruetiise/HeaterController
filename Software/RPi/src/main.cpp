@@ -35,12 +35,6 @@ void writeData(const uint8_t* data, size_t length)
 
 int main()
 {
-    // Initialize the SPI device
-    if (!spi.isOpen()) {
-        printf("Failed to open SPI device\n");
-        exit(EXIT_FAILURE);
-    }
-
     // Initialize the ST7735 display
     for (size_t i = 0; i < sizeof(initSequence); i++) {
         writeCommand(initSequence[i]);
