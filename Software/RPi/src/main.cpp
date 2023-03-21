@@ -1,69 +1,56 @@
+#include "spi.h"
+#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <fcntl.h>
-#include <linux/spi/spidev.h>
-#include <sys/ioctl.h>
 #include <unistd.h>
+
+// ST7735 initialization sequence
+const uint8_t initSequence[] = {
+        0x01, 0x80, 0x78, 0x20, 0x01, 0x05, 0x11, 0x0a, 0xb1, 0x00, 0x06, 0x3a,
+        0x3a, 0x0a, 0x02, 0x0c, 0x01, 0x2a, 0x00, 0x02, 0x7f, 0x00, 0x2b, 0x00,
+        0x02, 0x9f, 0x00, 0x36, 0xc8, 0x00, 0x29, 0x00, 0x2c, 0x00, 0x00
+};
+
+// Define the SPI device for the ST7735 display
+SpiDevice spi("/dev/spidev0.0", SPI_MODE_0, 8, 1000000);
+
+// Write a command to the ST7735 display
+void writeCommand(uint8_t cmd)
+{
+    uint8_t buffer[] = { 0x00, cmd };
+    spi.write(buffer, sizeof(buffer));
+}
+
+// Write data to the ST7735 display
+void writeData(const uint8_t* data, size_t length)
+{
+    uint8_t buffer[length + 1];
+    buffer[0] = 0x01;   // Data mode
+    memcpy(&buffer[1], data, length);
+    spi.write(buffer, sizeof(buffer));
+}
 
 int main()
 {
-    int spi_fd;
-    const char* spi_dev = "/dev/spidev0.0";
-    int spi_mode = SPI_MODE_0;
-    int spi_bits_per_word = 8;
-    int spi_speed_hz = 1000000;
-
-    // Open the SPI device file
-    spi_fd = open(spi_dev, O_RDWR);
-    if (spi_fd < 0) {
-        perror("Failed to open SPI device");
-        return EXIT_FAILURE;
+    // Initialize the SPI device
+    if (!spi.isOpen()) {
+        printf("Failed to open SPI device\n");
+        exit(EXIT_FAILURE);
     }
 
-    // Configure the SPI mode
-    if (ioctl(spi_fd, SPI_IOC_WR_MODE, &spi_mode) == -1) {
-        perror("Failed to set SPI mode");
-        return EXIT_FAILURE;
+    // Initialize the ST7735 display
+    for (size_t i = 0; i < sizeof(initSequence); i++) {
+        writeCommand(initSequence[i]);
+        usleep(100);
     }
 
-    // Configure the SPI bits per word
-    if (ioctl(spi_fd, SPI_IOC_WR_BITS_PER_WORD, &spi_bits_per_word) == -1) {
-        perror("Failed to set SPI bits per word");
-        return EXIT_FAILURE;
+    // Fill the entire screen with blue color
+    uint16_t buffer[80 * 160];
+    memset(buffer, 0xF800, sizeof(buffer));   // Red color
+    for (size_t i = 0; i < 80 * 160; i += 512) {
+        writeData((const uint8_t*)&buffer[i], 512);
     }
 
-    // Configure the SPI speed
-    if (ioctl(spi_fd, SPI_IOC_WR_MAX_SPEED_HZ, &spi_speed_hz) == -1) {
-        perror("Failed to set SPI speed");
-        return EXIT_FAILURE;
-    }
-
-    // Write some data to the SPI device
-    unsigned char tx_buf[] = {0x01, 0x02, 0x03, 0x04};
-    unsigned char rx_buf[sizeof(tx_buf)] = {0};
-    struct spi_ioc_transfer spi_xfer = {
-            .tx_buf = (unsigned long)tx_buf,
-            .rx_buf = (unsigned long)rx_buf,
-            .len = sizeof(tx_buf),
-            .delay_usecs = 0,
-            .bits_per_word = spi_bits_per_word,
-            .speed_hz = spi_speed_hz,
-    };
-    if (ioctl(spi_fd, SPI_IOC_MESSAGE(1), &spi_xfer) == -1) {
-        perror("Failed to write SPI data");
-        return EXIT_FAILURE;
-    }
-
-    // Print the received data
-    printf("Received data:");
-    for (int i = 0; i < sizeof(rx_buf); i++) {
-        printf(" %02X", rx_buf[i]);
-    }
-    printf("\n");
-
-    // Close the SPI device file
-    close(spi_fd);
-
-    return EXIT_SUCCESS;
+    return 0;
 }
