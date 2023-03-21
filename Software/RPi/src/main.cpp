@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <cstring>
 #include <unistd.h>
+#include <stdint.h>
+#include <stddef.h>
 
 // ST7735 initialization sequence
 const uint8_t initSequence[] = {
