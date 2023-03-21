@@ -47,8 +47,8 @@ int main()
             .rx_buf = (unsigned long)rx_buf,
             .len = sizeof(tx_buf),
             .delay_usecs = 0,
-            .speed_hz = spi_speed_hz,
             .bits_per_word = spi_bits_per_word,
+            .speed_hz = spi_speed_hz,
     };
     if (ioctl(spi_fd, SPI_IOC_MESSAGE(1), &spi_xfer) == -1) {
         perror("Failed to write SPI data");
