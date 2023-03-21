@@ -5,6 +5,8 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include <stdint.h>
+#include <stddef.h>
 
 SpiDevice::SpiDevice(const char* dev, uint8_t mode, uint8_t bitsPerWord, uint32_t speed) :
         m_mode(mode), m_bitsPerWord(bitsPerWord), m_speed(speed)

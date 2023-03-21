@@ -2,6 +2,8 @@
 #define SPI_H
 
 #include <linux/spi/spidev.h>
+#include <stdint.h>
+#include <stddef.h>
 
 class SpiDevice {
 public:
