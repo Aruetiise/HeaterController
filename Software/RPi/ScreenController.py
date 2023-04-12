@@ -13,7 +13,7 @@ class ScreenController:
             self.draw = draw
     
     def showBaseStats(self):
-        self.draw.text((10, 60), 'AZ-Delivery', fill='red')
+        #self.draw.text((10, 60), 'AZ-Delivery', fill='red')
         self.draw.line((130, 124, 155, 4), fill='yellow')
     
     def showMenu(self):
