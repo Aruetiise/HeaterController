@@ -9,9 +9,11 @@ class ScreenController:
         self.screen = None
         self.s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
         self.device=st7735(self.s,rotate=0,width=160,height=128,h_offset=0,v_offset=0,bgr=False)
+        with canvas(self.device) as draw:
+            self.draw = draw
     
     def showBaseStats(self):
-        canvas(self.device).text((10, 60), 'AZ-Delivery', fill='black')
+        self.draw.text((10, 60), 'AZ-Delivery', fill='black')
     
     def showMenu(self):
         pass
