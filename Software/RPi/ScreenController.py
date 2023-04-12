@@ -7,8 +7,8 @@ from luma.core.render import canvas
 class ScreenController:
     def __init__(self):
         self.screen = None
-        s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
-        device=st7735(s,rotate=0,width=160,height=128,h_offset=0,v_offset=0,bgr=False)
+        self.s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
+        self.device=st7735(s,rotate=0,width=160,height=128,h_offset=0,v_offset=0,bgr=False)
     
     def showBaseStats(self):
         canvas(self.device).text((10, 60), 'AZ-Delivery', fill='black')
