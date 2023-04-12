@@ -3,9 +3,7 @@ import sys
 from luma.core.interface.serial import spi
 from luma.lcd.device import st7735
 from luma.core.render import canvas
-from PIL import ImageFont
 
-font_path = '/home/luma.examples/examples/fonts/ChiKareGo.ttf'
 s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
 device=st7735(s,rotate=0,width=160,height=128,h_offset=0,v_offset=0,bgr=False)
 
@@ -24,20 +22,9 @@ def primitives(device, draw):
         # Print 'AZ-Delivery'
         draw.text((10, 60), 'AZ-Delivery', fill='red')
 
-def changing_var(device):
-        size = 40
-        new_font = ImageFont.truetype(font_path, size)
-        for i in range(100):
-                with canvas(device) as draw:
-                        draw.text((40, 38), 'Changing var.', fill='red')
-                        if i < 10:
-                                draw.text((63, 55),'0{}'.format(str(i)),font=new_font,fill='red')
-                        else:
-                                draw.text((63, 55), str(i), font=new_font, fill='red')
-                        time.sleep(0.02)
-
 print('[Press CTRL + C to end the script!]')
 try:
+        
         print('Testing basic graphics.')
         with canvas(device) as draw:
                 primitives(device, draw)
