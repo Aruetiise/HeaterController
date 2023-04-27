@@ -16,22 +16,36 @@ class ScreenController:
     
     def showBaseStats(self):
             with canvas(self.device) as draw:
+                #Grid
                 draw.line((0,32,self.width,32), fill='white')
                 draw.line((0,64,self.width,64), fill='white')
                 draw.line((0,96,self.width,96), fill='white')
 
+                #ROW 0
+                #Current stats
                 draw.text((3,3),'20°C', font=self.font_type, fill='white')
-                draw.text((65,3),'53%', font=self.font_type, fill='white')
+                draw.text((55,3),'53%', font=self.font_type, fill='white')
                 draw.text((105,3),'16:33', font=self.font_type, fill='white')
 
+                #ROW 1
+                draw.text((3,32),'Ziel:', font=self.font_type, fill='white')
+                draw.text((50,32),'19°C', font=self.font_type, fill='white')
+                draw.text((90,32),'🔥', font=self.font_type, fill='white')
+                
+                #ROW 2
+                #Heating timer
+                #is currently heating
                 draw.ellipse((5, 67, 28, 92), outline=(0, 255, 0), fill='green')
 
+                #start time
                 draw.text((32,67),'14:30', font=self.font_type, fill='white')
 
+                #arrow
                 draw.line((85,80,100,80), fill='white')
                 draw.line((90,75,100,80), fill='white')
                 draw.line((90,85,100,80), fill='white')
 
+                #end time
                 draw.text((105,67),'22:30', font=self.font_type, fill='white')
 
     
