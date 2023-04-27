@@ -1,12 +1,15 @@
 from luma.core.interface.serial import spi
 from luma.lcd.device import st7735
 from luma.core.render import canvas
+from PIL import ImageFont
 
 class ScreenController:
     def __init__(self):
         self.width = 160
         self.height=128
         
+        self.font_type = ImageFont.truetype('times_new_roman_bold.ttf', 15)
+
         s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
         self.device=st7735(s,rotate=0,width=160,height=128,h_offset=0,v_offset=0,bgr=False)
         self.device.backlight(False)
@@ -17,7 +20,7 @@ class ScreenController:
             draw.line((0,64,self.width,64), fill='white')
             draw.line((0,96,self.width,96), fill='white')
 
-            draw.text((3,3),'20°C', fill='white')
+            draw.text((3,3),'20°C', font=self.font_type, fill='white')
     
     def showMenu(self):
         pass
