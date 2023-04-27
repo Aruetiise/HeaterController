@@ -10,16 +10,14 @@ class ScreenController:
         s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
         self.device=st7735(s,rotate=0,width=160,height=128,h_offset=0,v_offset=0,bgr=False)
         self.device.backlight(False)
-        #with canvas(self.device) as draw:
-        #    self.draw = draw
     
     def showBaseStats(self):
         with canvas(self.device) as draw:
             draw.line((0,32,self.width,32), fill='black')
-            draw.line((0,64,self.width,64), fill='black')
+            """draw.line((0,64,self.width,64), fill='black')
             draw.line((0,96,self.width,96), fill='black')
 
-            draw.text((3,3),'20°C', fill='black')
+            draw.text((3,3),'20°C', fill='black')"""
     
     def showMenu(self):
         pass
