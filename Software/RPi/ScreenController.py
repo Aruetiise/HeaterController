@@ -30,11 +30,12 @@ class ScreenController:
             #ROW 1
                 draw.text((3,35),'Ziel:', font=self.font_type, fill='white')
                 draw.text((50,35),'19°C', font=self.font_type, fill='white')
-                draw.text((120,35),'Off', font=self.font_type, fill='white')
+                #is currently heating
+                draw.ellipse((120, 35, 143, 58), outline=(0, 255, 0), fill='green')
                 
             #ROW 2
                 #Heating timer
-                #is currently heating
+                #Is heating time
                 draw.ellipse((5, 67, 28, 92), outline=(0, 255, 0), fill='green')
 
                 #start time
@@ -49,7 +50,8 @@ class ScreenController:
                 draw.text((105,67),'22:30', font=self.font_type, fill='white')
 
             #ROW 3
-                draw.text((3,99),'+1:', font=self.font_type, fill='white')
+                #is heating time
+                draw.ellipse((5, 67, 28, 92), outline=(255, 0, 0), fill='red')
                 #start time
                 draw.text((32,99),'14:30', font=self.font_type, fill='white')
 
