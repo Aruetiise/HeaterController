@@ -13,8 +13,7 @@ class ScreenController:
     
     def showBaseStats(self):
         with canvas(self.device) as draw:
-            draw.rectangle((4, 4, 80, 124), outline='blue', fill=(22, 55, 55))
-            draw.line((0,32,self.width,32), fill='black')
+            draw.line((0,32,self.width,32), fill='white')
             """draw.line((0,64,self.width,64), fill='black')
             draw.line((0,96,self.width,96), fill='black')
 
