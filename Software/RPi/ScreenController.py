@@ -4,7 +4,10 @@ from luma.core.render import canvas
 
 class ScreenController:
     def __init__(self):
-        s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
+        self.width = 160
+        self.height=128
+        
+        self.s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
         self.device=st7735(s,rotate=0,width=160,height=128,h_offset=0,v_offset=0,bgr=False)
         self.device.backlight(False)
         #with canvas(self.device) as draw:
@@ -12,7 +15,11 @@ class ScreenController:
     
     def showBaseStats(self):
         with canvas(self.device) as draw:
-            draw.rectangle((4, 4, 80, 124), outline='blue', fill=(22, 55, 55))
+            draw.line(0,32,self.width,32, fill='black')
+            draw.line(0,64,self.width,64, fill='black')
+            draw.line(0,96,self.width,96, fill='black')
+
+            draw.text((3,3),'20°C', fill='black')
     
     def showMenu(self):
         pass
