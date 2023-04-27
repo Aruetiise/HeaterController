@@ -14,8 +14,8 @@ class ScreenController:
             self.draw = draw
     
     def showBaseStats(self):
-        #self.draw.text((10, 60), 'AZ-Delivery', fill='red')
-        self.draw.line((130, 124, 155, 4), fill='yellow')
+        self.device.show()
+        self.draw.rectangle((4, 4, 80, 124), outline='blue', fill=(22, 55, 55))
         time.sleep(1)
     
     def showMenu(self):
