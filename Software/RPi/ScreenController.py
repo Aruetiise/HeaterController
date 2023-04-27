@@ -21,14 +21,14 @@ class ScreenController:
                 draw.line((0,96,self.width,96), fill='white')
 
                 draw.text((3,3),'20°C', font=self.font_type, fill='white')
-                draw.text((50,3),'53%', font=self.font_type, fill='white')
-                draw.text((95,3),'16:33', font=self.font_type, fill='white')
+                draw.text((65,3),'53%', font=self.font_type, fill='white')
+                draw.text((105,3),'16:33', font=self.font_type, fill='white')
 
                 draw.ellipse((5, 67, 28, 92), outline=(0, 255, 0), fill='green')
 
-                draw.text((30,67),'14:30', font=self.font_type, fill='white')
+                draw.text((32,67),'14:30', font=self.font_type, fill='white')
 
-                draw.line((83,80,100,80), fill='white')
+                draw.line((85,80,100,80), fill='white')
                 draw.line((90,75,100,80), fill='white')
                 draw.line((90,85,100,80), fill='white')
 
