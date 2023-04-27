@@ -30,7 +30,7 @@ class ScreenController:
             #ROW 1
                 draw.text((3,35),'Ziel:', font=self.font_type, fill='white')
                 draw.text((50,35),'19°C', font=self.font_type, fill='white')
-                draw.text((100,35),'Off', font=self.font_type, fill='white')
+                draw.text((120,35),'Off', font=self.font_type, fill='white')
                 
             #ROW 2
                 #Heating timer
@@ -49,17 +49,17 @@ class ScreenController:
                 draw.text((105,67),'22:30', font=self.font_type, fill='white')
 
             #ROW 3
-                draw.text((32,67),'Next:', font=self.font_type, fill='white')
+                draw.text((32,99),'Next:', font=self.font_type, fill='white')
                 #start time
-                draw.text((32,67),'14:30', font=self.font_type, fill='white')
+                draw.text((32,99),'14:30', font=self.font_type, fill='white')
 
                 #arrow
-                draw.line((86,80,100,80), fill='white')
-                draw.line((95,77,100,80), fill='white')
-                draw.line((95,83,100,80), fill='white')
+                draw.line((86,112,100,80), fill='white')
+                draw.line((95,109,100,80), fill='white')
+                draw.line((95,115,100,80), fill='white')
 
                 #end time
-                draw.text((105,67),'22:30', font=self.font_type, fill='white')
+                draw.text((105,99),'22:30', font=self.font_type, fill='white')
 
     
     def showMenu(self):
