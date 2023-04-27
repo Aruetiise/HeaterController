@@ -14,7 +14,6 @@ class ScreenController:
             self.draw = draw
     
     def showBaseStats(self):
-        self.device.show()
         self.draw.rectangle((4, 4, 80, 124), outline='blue', fill=(22, 55, 55))
         time.sleep(1)
     
@@ -41,3 +40,6 @@ class ScreenController:
     
     def enableScreen(self):
         self.device.show()
+
+    def cleanup(self):
+        self.device.cleanup()

@@ -2,9 +2,11 @@ from ScreenController import ScreenController
 import time
 
 screenController = ScreenController()
-screenController.showBaseStats()
-
-while(True):
-    screenController.showBaseStats()
-    print("wainting")
-    time.sleep(5)
+print('[Press CTRL + C to end the script!]')
+try:
+        screenController.showBaseStats()
+        screenController.enableScreen()
+        time.sleep(3)
+except KeyboardInterrupt:
+        screenController.cleanup()
+        print('Script end!')
