@@ -8,7 +8,7 @@ class ScreenController:
         self.width = 160
         self.height=128
         
-        self.font_type = ImageFont.truetype('times_new_roman_bold.ttf', 15)
+        self.font_type = ImageFont.truetype('times_new_roman_bold.ttf', 22)
 
         s = spi(port=0, device=0, cs_high=True, gpio_DC=23, gpio_RST=24)
         self.device=st7735(s,rotate=0,width=160,height=128,h_offset=0,v_offset=0,bgr=False)
