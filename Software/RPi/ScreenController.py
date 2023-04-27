@@ -51,7 +51,7 @@ class ScreenController:
 
             #ROW 3
                 #is heating time
-                draw.ellipse((5, 67, 28, 92), outline=(255, 0, 0), fill='red')
+                draw.ellipse((5, 95, 28, 92), outline=(255, 0, 0), fill='red')
                 #start time
                 draw.text((32,99),'14:30', font=self.font_type, fill='white')
 
