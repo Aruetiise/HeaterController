@@ -49,14 +49,14 @@ class ScreenController:
                 draw.text((105,67),'22:30', font=self.font_type, fill='white')
 
             #ROW 3
-                draw.text((32,99),'Next:', font=self.font_type, fill='white')
+                draw.text((3,99),'Next:', font=self.font_type, fill='white')
                 #start time
                 draw.text((32,99),'14:30', font=self.font_type, fill='white')
 
                 #arrow
-                draw.line((86,112,100,80), fill='white')
-                draw.line((95,109,100,80), fill='white')
-                draw.line((95,115,100,80), fill='white')
+                draw.line((86,112,100,112), fill='white')
+                draw.line((95,109,100,112), fill='white')
+                draw.line((95,115,100,112), fill='white')
 
                 #end time
                 draw.text((105,99),'22:30', font=self.font_type, fill='white')
