@@ -5,7 +5,6 @@ screenController = ScreenController()
 print('[Press CTRL + C to end the script!]')
 try:
         screenController.showBaseStats()
-        screenController.enableScreen()
         while(True):
             pass
             
