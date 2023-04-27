@@ -14,10 +14,10 @@ class ScreenController:
     def showBaseStats(self):
         with canvas(self.device) as draw:
             draw.line((0,32,self.width,32), fill='white')
-            """draw.line((0,64,self.width,64), fill='black')
-            draw.line((0,96,self.width,96), fill='black')
+            draw.line((0,64,self.width,64), fill='white')
+            draw.line((0,96,self.width,96), fill='white')
 
-            draw.text((3,3),'20°C', fill='black')"""
+            draw.text((3,3),'20°C', fill='white')
     
     def showMenu(self):
         pass
