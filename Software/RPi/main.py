@@ -7,8 +7,7 @@ try:
         screenController.showBaseStats()
         screenController.enableScreen()
         while(True):
-            screenController.enableScreen()
-            screenController.disableScreen()
+            pass
             
 except KeyboardInterrupt:
         screenController.cleanup()
