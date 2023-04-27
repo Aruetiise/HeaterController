@@ -49,7 +49,7 @@ class ScreenController:
                 draw.text((105,67),'22:30', font=self.font_type, fill='white')
 
             #ROW 3
-                draw.text((3,99),'Next:', font=self.font_type, fill='white')
+                draw.text((3,99),'+1:', font=self.font_type, fill='white')
                 #start time
                 draw.text((32,99),'14:30', font=self.font_type, fill='white')
 
