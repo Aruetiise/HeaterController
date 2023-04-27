@@ -40,7 +40,7 @@ class ScreenController:
                 draw.text((32,67),'14:30', font=self.font_type, fill='white')
 
                 #arrow
-                draw.line((86,80,100,80), fill='white')
+                draw.line((88,80,100,80), fill='white')
                 draw.line((95,77,100,80), fill='white')
                 draw.line((95,83,100,80), fill='white')
 
@@ -54,7 +54,7 @@ class ScreenController:
                 draw.text((32,99),'14:30', font=self.font_type, fill='white')
 
                 #arrow
-                draw.line((86,112,100,112), fill='white')
+                draw.line((88,112,100,112), fill='white')
                 draw.line((95,109,100,112), fill='white')
                 draw.line((95,115,100,112), fill='white')
 
