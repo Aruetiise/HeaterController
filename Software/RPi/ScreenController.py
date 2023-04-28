@@ -61,9 +61,44 @@ class ScreenController:
                 #end time
                 draw.text((105,99),'22:30', font=self.font_type, fill='white')
 
-    
-    def showMenu(self):
-        pass
+    def showMenu(self, selected : int):
+        with canvas(self.device) as draw:
+            #Grid
+            draw.line((0,32,self.width,32), fill='white')
+            draw.line((0,64,self.width,64), fill='white')
+            draw.line((0,96,self.width,96), fill='white')
+
+            #ROW 0
+            text = 'Zeit ändern'
+            if(selected == 0):
+                draw.rectangle((0,0,self.width,32), outline='white', fill='white')
+                draw.text((3,3),text, font=self.font_type, fill='black')
+            else:
+                draw.text((3,3),text, font=self.font_type, fill='white')
+
+            #ROW 1
+            text = 'Pause'
+            if(selected == 0):
+                draw.rectangle((0,32,self.width,64), outline='white', fill='white')
+                draw.text((3,35),text, font=self.font_type, fill='black')
+            else:
+                draw.text((3,35),text, font=self.font_type, fill='white')
+
+            #ROW 2
+            text = 'Einstellungen'
+            if(selected == 0):
+                draw.rectangle((0,64,self.width,96), outline='white', fill='white')
+                draw.text((3,67),text, font=self.font_type, fill='black')
+            else:
+                draw.text((3,67),text, font=self.font_type, fill='white')
+
+            #ROW 3
+            text = 'Zurück'
+            if(selected == 0):
+                draw.rectangle((0,96,self.width,self.height), outline='white', fill='white')
+                draw.text((3,99),text, font=self.font_type, fill='black')
+            else:
+                draw.text((3,99),text, font=self.font_type, fill='white')
     
     def showAddSlot(self):
         pass
