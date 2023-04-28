@@ -1,34 +1,40 @@
 from datetime import datetime, time
-from HeatingPeriode import HeatingPeriode
+import math
 
 class Scheduler:
-    def __init__(self):
-        self._heating_periods = {
-            "Monday": [],
-            "Tuesday": [],
-            "Wednesday": [],
-            "Thursday": [],
-            "Friday": [],
-            "Saturday": [],
-            "Sunday": []
-        }
+    def __init__(self, minTemp : float):
+        self._heating_periods = [[minTemp] * 24*60]*7
         
-    def add_heating_period(self, heating_period: HeatingPeriode):
-        self._heating_periods[heating_period._day].append(heating_period)
-        
-    def remove_heating_period(self, heating_period: HeatingPeriode):
-        day_heating_periods = self._heating_periods[heating_period._day]
-        if heating_period not in day_heating_periods:
-            raise ValueError("Heating period not found")
-        day_heating_periods.remove(heating_period)
-        
+
+    def setTimePeriode(self, day : int, temperature:float, startH : int, endH : int, startM=0 , endM=0):
+        for min in range(startH*60+startM, endH+60+endM):
+            self._heating_periods[day][min] = temperature
+    
     def current_Heat(self):
-        now = datetime.now()
-        day = now.strftime("%A").lower()
-        if day in self._heating_periods:
-            for heating_period in self._heating_periods[day]:
-                start_time = datetime.strptime(heating_period._start_time, "%H:%M").time()
-                end_time = datetime.strptime(heating_period._end_time, "%H:%M").time()
-                if start_time <= now.time() <= end_time:
-                    return heating_period._temperature
-        return -1
+        day = self.getCurrentDay()
+        currentMinute = dt.strftime("%H") * 60 + dt.strftime("%M")
+        return self._heating_periods[day][currentMinute]
+    
+    def getStartTime(self, time : int):
+        day = [self.getCurrentDay()]
+        timeTemp = day[time]
+        start = time
+
+        while(day[start] == timeTemp and start >0):
+            start -= start
+        return start
+
+    def getStartTime(self, time : int):
+        day = [self.getCurrentDay()]
+        timeTemp = day[time]
+        end = time
+
+        while(day[end] == timeTemp and end < 60*24-1):
+            end -= end
+        return end
+    
+    def formatTime(time : int):
+        return str(math.floor(time/60)) + ":" + str(time%60)
+
+    def getCurrentDay():
+        return datetime.now().weekday()
